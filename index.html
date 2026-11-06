@@ -217,10 +217,9 @@
             z-index: 1;
         }
 
-        /* Services Section */
-        .services {
+        /* Section Base Styles */
+        section {
             padding: 5rem 5%;
-            text-align: center;
         }
 
         .section-subtitle {
@@ -230,11 +229,134 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .section-title {
             font-size: 2rem;
             margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-darker);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Contact Info */
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-soft);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text p,
+        .contact-text a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--accent);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: var(--bg-dark);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background-color: var(--bg-darker);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-darker);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
@@ -247,6 +369,9 @@
             }
             .hero-img {
                 width: 320px;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -313,7 +438,6 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- Social Icons -->
             <div class="social-links">
                 <a href="https://facebook.com/aashishtamang22" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-facebook-f"></i>
@@ -350,42 +474,59 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section id="services">
         <p class="section-subtitle">Services</p>
         <h2 class="section-title">What I Do</h2>
-        <!-- You can add service cards here easily -->
+        <!-- Add your service cards here later -->
     </section>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <p class="section-subtitle">Get In Touch</p>
+        <h2 class="section-title">Contact Me</h2>
 
-        // Active link highlighting
-        const sections = document.querySelectorAll('section');
-        const navLinkItems = document.querySelectorAll('.nav-links a');
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Let's Talk</h3>
+                <p>Feel free to reach out to me for projects, collaborations, or just a friendly hello!</p>
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Name</h4>
+                        <p>Aashish Tamang</p>
+                    </div>
+                </div>
 
-            navLinkItems.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <a href="mailto:syangtanaashish7@gmail.com">syangtanaashish7@gmail.com</a>
+                    </div>
+                </div>
 
-</body>
-</html>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>+61 424022671</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Location</h4>
+                        <p>New South Wales, Australia</p>
+                    </div>
+                </div
